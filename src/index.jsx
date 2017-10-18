@@ -1,9 +1,9 @@
-import 'react-hot-loader/patch';
-import React from 'react';
-import { AppContainer } from 'react-hot-loader';
-import ReactDOM from 'react-dom';
+import 'react-hot-loader/patch'
+import { AppContainer } from 'react-hot-loader'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import App from './App.jsx';
+import App from './components/App.jsx'
 
 const render = Component => {
   ReactDOM.render(
@@ -11,11 +11,11 @@ const render = Component => {
       <Component />
     </AppContainer>,
     document.getElementById('app')
-  );
+  )
 }
 
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./App.jsx', () => { render(App) });
+  module.hot.accept('./components/App.jsx', () => { render(App) })
 }

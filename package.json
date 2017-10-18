@@ -1,11 +1,11 @@
 {
   "name": "hello-world",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack -d --watch",
-    "hot": "webpack-dev-server --hot --open",
+    "hot": "webpack-dev-server --progress --colors --hot --inline --content-base dist/",
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.1.1",
+    "react-router-dom": "^4.2.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.2"
   }

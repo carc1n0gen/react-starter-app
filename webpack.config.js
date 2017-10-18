@@ -5,10 +5,8 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 const config = {
+  devtool: 'source-map',
   entry: APP_DIR + '/index.jsx',
-  devServer: {
-    contentBase: "./dist"
-  },
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
