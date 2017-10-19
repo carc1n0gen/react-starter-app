@@ -11,30 +11,18 @@ import AboutPage from '../pages/AboutPage.jsx'
 import ContactPage from '../pages/ContactPage.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 
-export default class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      num: 1
-    }
-  }
-
-  render () {
-    return (
+export default () => (
+  <div>
+    <Router>
       <div>
-        <Router>
-          <div>
-            <Navigation />
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/about" component={AboutPage} />
-              <Route path="/contact" component={ContactPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </div>
-        </Router>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/contact" component={ContactPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
-    )
-  }
-}
+    </Router>
+  </div>
+)
