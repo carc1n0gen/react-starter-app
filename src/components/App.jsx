@@ -1,28 +1,25 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
 
 import Navigation from './Navigation.jsx'
-import HomePage from '../pages/HomePage.jsx'
-import AboutPage from '../pages/AboutPage.jsx'
-import ContactPage from '../pages/ContactPage.jsx'
-import NotFoundPage from '../pages/NotFoundPage.jsx'
+
+import home from './pages/home.jsx'
+import about from './pages/about.jsx'
+import notFound from './pages/404.jsx'
 
 export default () => (
-  <div>
-    <Router>
-      <div>
-        <Navigation />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </div>
-    </Router>
-  </div>
+  <Router>
+    <div>
+      <Navigation />
+      <Switch>
+        <Route exact path="/" component={home} />
+        <Route path="/about" component={about} />
+        <Route component={notFound} />
+      </Switch>
+    </div>
+  </Router>
 )

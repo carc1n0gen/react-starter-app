@@ -2,11 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default () => (
-  <div>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/contact">Contact</Link></li>
-    </ul>
-  </div>
+  <nav className="navbar navbar-default">
+    <div className="container">
+      <div className="navbar-header">
+        <Link className="navbar-brand" to="/">React Starter App</Link>
+      </div>
+      <ul className="nav navbar-nav">
+        <li><Link to="/about">About</Link></li>
+      </ul>
+    </div>
+  </nav>
 )
