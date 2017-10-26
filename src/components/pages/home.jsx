@@ -1,8 +1,7 @@
 import React from 'react'
 
-import Banner from '../Banner.jsx'
-import BigIcon from '../BigIcon.jsx'
-
+import Banner from '../Banner'
+import BigIcon from '../BigIcon'
 
 export default () => (
   <div className="container">

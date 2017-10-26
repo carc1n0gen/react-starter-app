@@ -8,8 +8,8 @@ import {
 import Navigation from './Navigation.jsx'
 
 import home from './pages/home.jsx'
-import about from './pages/about.jsx'
-import notFound from './pages/404.jsx'
+import about from './pages/about'
+import notFound from './pages/404'
 
 export default () => (
   <Router>

@@ -12,10 +12,17 @@ const extractSass = new ExtractTextPlugin({
 });
 
 const config = {
-  entry: APP_DIR + '/index.jsx',
+  entry: [
+    APP_DIR + '/sass/main.scss',
+    'react-hot-loader/patch',
+    APP_DIR + '/index.js',
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module : {
     loaders : [{
