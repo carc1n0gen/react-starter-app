@@ -1,7 +1,8 @@
 import React from 'react';
+import { Grid } from 'react-bootstrap'
 
-export default () => {
-  return (
+export default () => (
+  <Grid>
     <h1>Not Found</h1>
-  )
-}
+  </Grid>
+)

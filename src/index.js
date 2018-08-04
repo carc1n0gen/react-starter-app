@@ -6,10 +6,10 @@ import App from './components/App'
 
 /* Setup global things */
 
-try {
-    window.$ = window.jQuery = require('jquery')
-    require('bootstrap-sass')
-} catch (e) {}
+// try {
+//     window.$ = window.jQuery = require('jquery')
+//     require('bootstrap-sass')
+// } catch (e) {}
 
 /* Render the app */
 

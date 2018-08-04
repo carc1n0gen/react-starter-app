@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "hot": "webpack-dev-server -d --host 0.0.0.0 --allowed-hosts .c9users.io --devtool source-maps --progress --colors --hot --inline --content-base dist/",
-    "watch": "webpack -d --devtool soruce-maps --watch",
+    "hot": "webpack-dev-server -d --devtool source-maps --progress --colors --hot --inline --content-base dist/",
+    "watch": "webpack -d --devtool source-maps --watch",
     "dev": "webpack -d --devtool source-maps",
     "prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -21,6 +21,7 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.28.7",
+    "react-bootstrap": "^0.32.1",
     "extract-text-webpack-plugin": "^3.0.1",
     "file-loader": "^1.1.5",
     "jquery": "^3.2.1",

@@ -1,31 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Banner extends React.Component {
-  onClick = () => alert('I got clicked!')
+const Banner = (props) => (
+  <div className="jumbotron">
+    <h1>{props.title}</h1>
+    <p>
+      { props.subtitle &&
+        <span>{props.subtitle}</span>
+      }
+      &nbsp;
+      { props.clickHandler &&
+        <button onClick={props.clickHandler} className="btn btn-primary">Click me</button>
+      }
+    </p>
+  </div>
+)
 
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string,
-    clickHandler: PropTypes.func,
-  }
-    
-  render() {
-    return (
-      <div className="jumbotron">
-        <h1>{this.props.title}</h1>
-        <p>
-          { this.props.subtitle &&
-            <span>{this.props.subtitle}</span>
-          }
-
-          &nbsp;
-
-          { this.props.clickHandler &&
-            <button onClick={this.props.clickHandler} className="btn btn-primary">Click me</button>
-          }
-        </p>
-      </div>
-    )
-  }
+Banner.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  clickHandler: PropTypes.func
 }
+
+export default Banner

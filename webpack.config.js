@@ -1,24 +1,21 @@
-const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
-
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const extractSass = new ExtractTextPlugin({
     filename: 'bundle.css',
     disable: process.env.NODE_ENV === 'development'
 });
 
-const config = {
+module.exports = {
   entry: [
-    APP_DIR + '/sass/main.scss',
     'react-hot-loader/patch',
     APP_DIR + '/index.js',
   ],
   output: {
     path: BUILD_DIR,
+    publicPath: '/',
     filename: 'bundle.js'
   },
   resolve: {
@@ -46,7 +43,8 @@ const config = {
   },
   plugins: [
     extractSass
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+  }, 
 };
-
-module.exports = config;
