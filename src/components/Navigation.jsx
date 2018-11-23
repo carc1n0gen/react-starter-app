@@ -10,7 +10,7 @@ export default () => (
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
-      <NavItem href="/about">About</NavItem>
+      <NavItem componentClass={Link} href="/about" to="/about">About</NavItem>
     </Nav>
   </Navbar>
 )

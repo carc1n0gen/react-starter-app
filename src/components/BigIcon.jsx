@@ -1,13 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { Glyphicon } from 'react-bootstrap'
 
-import './BigIcon.scss'
+const BigIconWrapper = styled.div`
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  font-size: 8em;
+`
 
 const BigIcon = (props) => (
-  <div className="big-icon">
+  <BigIconWrapper>
     <Glyphicon glyph={props.icon} />
-  </div>
+  </BigIconWrapper>
 )
 
 BigIcon.propTypes = {

@@ -1,31 +1,27 @@
-import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 
-/* Setup global things */
-
+// Set up global things
 // try {
 //     window.$ = window.jQuery = require('jquery')
-//     require('bootstrap-sass')
 // } catch (e) {}
 
-/* Render the app */
+// Render the app
+function renderApp() {
+  ReactDOM.render(
+    React.createElement(AppContainer, {}, React.createElement(App)),
+    document.getElementById('app')
+  )
+}
 
-ReactDOM.render(
-  React.createElement(AppContainer, {}, React.createElement(App)),
-  document.getElementById('app')
-)
+renderApp()
 
-/* Hot reloading */
-
+// Hot reloading
 if (module.hot) {
   module.hot.accept(
     './components/App',
-    ReactDOM.render(
-      React.createElement(AppContainer, {}, React.createElement(App)),
-      document.getElementById('app')
-    )
+    renderApp()
   )
 }

@@ -1,19 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Jumbotron } from 'react-bootstrap'
 
 const Banner = (props) => (
-  <div className="jumbotron">
+  <Jumbotron>
     <h1>{props.title}</h1>
     <p>
-      { props.subtitle &&
+      {props.subtitle &&
         <span>{props.subtitle}</span>
       }
       &nbsp;
-      { props.clickHandler &&
+      {props.clickHandler &&
         <button onClick={props.clickHandler} className="btn btn-primary">Click me</button>
       }
     </p>
-  </div>
+  </Jumbotron>
 )
 
 Banner.propTypes = {

@@ -9,16 +9,14 @@ export default class Home extends Component {
     show: false
   }
 
-  handleClose = () => this.setState({ show: false })
-
-  handleShow = () => this.setState({ show: true })
+  toggleShow = () => this.setState({ show: !(this.state.show) })
 
   render = () => (
     <Grid>
-      <Banner 
+      <Banner
         title="React Is Cool"
         subtitle="Get'er done!"
-        clickHandler={this.handleShow}
+        clickHandler={this.toggleShow}
       />
   
       <Row>
@@ -56,9 +54,9 @@ export default class Home extends Component {
         </Col>
       </Row>
 
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal show={this.state.show} onHide={this.toggleShow}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Woa a modal!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h2>I got clicked!</h2>
