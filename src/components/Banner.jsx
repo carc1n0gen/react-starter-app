@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Jumbotron } from 'react-bootstrap'
+import { Jumbotron, Button } from 'react-bootstrap'
 
 const Banner = (props) => (
   <Jumbotron>
@@ -11,7 +11,9 @@ const Banner = (props) => (
       }
       &nbsp;
       {props.clickHandler &&
-        <button onClick={props.clickHandler} className="btn btn-primary">Click me</button>
+        <Button bsStyle="primary" onClick={props.clickHandler}>
+          Click me
+        </Button>
       }
     </p>
   </Jumbotron>

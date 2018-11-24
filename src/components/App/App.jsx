@@ -4,7 +4,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-
 import Navigation from '../Navigation'
 import * as Pages from '../Pages'
 import './App.scss'
@@ -15,6 +14,7 @@ export default () => (
       <Navigation />
       <Switch>
         <Route exact path="/" component={Pages.Home} />
+        <Route path="/todos" component={Pages.Todos} />
         <Route path="/about" component={Pages.About} />
         <Route component={Pages.NotFound} />
       </Switch>

@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
+import store from './components/App/redux/store'
 
 // Set up global things
 // try {
@@ -9,19 +11,23 @@ import App from './components/App'
 // } catch (e) {}
 
 // Render the app
-function renderApp() {
+const render = Component => {
   ReactDOM.render(
-    React.createElement(AppContainer, {}, React.createElement(App)),
+    React.createElement(Provider, { store },
+      React.createElement(AppContainer, {},
+        React.createElement(Component)
+      )
+    ),
     document.getElementById('app')
   )
 }
 
-renderApp()
+render(App)
 
 // Hot reloading
 if (module.hot) {
-  module.hot.accept(
-    './components/App',
-    renderApp()
-  )
+  module.hot.accept('./components/App', () => {
+    const nextContainer = require('./components/App').default;
+    render(nextContainer);
+  })
 }
