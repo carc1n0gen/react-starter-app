@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { injectIntl } from 'react-intl'
 import { Grid, Row, Col, Modal } from 'react-bootstrap'
 
 import Banner from '../Banner'
 import BigIcon from '../BigIcon'
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     show: false
   }
@@ -65,3 +66,5 @@ export default class Home extends Component {
     </Grid>
   )
 }
+
+export default injectIntl(Home)

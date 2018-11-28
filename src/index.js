@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { IntlProvider } from 'react-intl'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 import store from './components/App/redux/store'
@@ -13,10 +14,12 @@ import store from './components/App/redux/store'
 // Render the app
 const render = Component => {
   ReactDOM.render(
-    React.createElement(Provider, { store },
-      React.createElement(AppContainer, {},
-        React.createElement(Component)
-      )
+    React.createElement(AppContainer, {},
+      React.createElement(IntlProvider, { locale: navigator.language },
+        React.createElement(Provider, { store },
+          React.createElement(Component)
+        )
+      ),
     ),
     document.getElementById('app')
   )
