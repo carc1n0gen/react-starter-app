@@ -5,12 +5,11 @@ import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 import store from './redux/store'
 import LanguageProvider from './components/LanguageProvider'
-import en_US from './i18n/en_US.json'
-import en_CA from './i18n/en_CA.json'
 
 // Set up global things
 // try {
 //     window.$ = window.jQuery = require('jquery')
+//     // But why would you want to do that right? ;)
 // } catch (e) {}
 
 // Render the app
