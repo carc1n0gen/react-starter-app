@@ -31,7 +31,7 @@ render(App)
 // Hot reloading
 if (module.hot) {
   module.hot.accept('./components/App', () => {
-    const nextContainer = require('./components/App').default;
-    render(nextContainer);
+    const nextContainer = require('./components/App').default
+    render(nextContainer)
   })
 }
