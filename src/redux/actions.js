@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, HOVER_TODO } from "./actionTypes"
+import { ADD_TODO, TOGGLE_TODO, HOVER_TODO, SET_LOCALE } from "./actionTypes"
 
 let nextTodoId = 0;
 
@@ -21,5 +21,12 @@ export const hoverTodo = id => ({
   type: HOVER_TODO,
   payload: {
     id
+  }
+})
+
+export const setLocale = locale => ({
+  type: SET_LOCALE,
+  payload: {
+    locale
   }
 })

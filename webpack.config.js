@@ -27,6 +27,9 @@ module.exports = {
       include : APP_DIR,
       loader : 'babel-loader'
     },{
+      test: /\.json$/,
+      loader: 'json-loader'
+    },{
       test: /\.scss/,
       use: extractSass.extract({
         use: [{

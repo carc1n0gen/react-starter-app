@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Jumbotron, Button } from 'react-bootstrap'
 
@@ -15,6 +16,10 @@ const Banner = (props) => (
           Click me
         </Button>
       }
+    </p>
+    <p>
+      <span>The following word uses react-intl: </span>
+      <FormattedMessage id="banner.word.color" />
     </p>
   </Jumbotron>
 )

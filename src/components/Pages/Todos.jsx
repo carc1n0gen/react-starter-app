@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Col, Button, FormGroup, ControlLabel, FormControl, ListGroup, 
   ListGroupItem, Glyphicon, Badge } from 'react-bootstrap'
-import { addTodo, toggleTodo, hoverTodo } from '../App/redux/actions'
-import { getTodos } from '../App/redux/selectors'
+import { addTodo, toggleTodo, hoverTodo } from '../../redux/actions'
+import { getTodos } from '../../redux/selectors'
 
 class Todos extends Component {
   state = {

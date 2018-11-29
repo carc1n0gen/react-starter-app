@@ -1,4 +1,7 @@
+export const getLocaleState = store => store.localeReducers
 export const getTodosState = store => store.todoReducers
+
+export const getLocale = store => getLocaleState(store).language.locale
 
 export const getTodos = store => 
   Object.keys(getTodosState(store).todos).map(key => {
@@ -10,4 +13,3 @@ export const getTodos = store =>
       hover: todoState.todos[key].hover
     }
   })
-
