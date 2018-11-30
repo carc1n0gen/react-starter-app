@@ -1,6 +1,7 @@
 import { ADD_TODO, TOGGLE_TODO, HOVER_TODO } from "../actionTypes"
 
 const initialState = {
+  nextId: 0,
   todos: {}
 }
 
@@ -8,9 +9,10 @@ export default function (state = initialState, action) {
   switch(action.type) {
     case ADD_TODO:
       return {
+        nextId: state.nextId + 1,
         todos: { 
           ...state.todos,
-          [action.payload.id]: { 
+          [state.nextId]: { 
             text: action.payload.text,
             completed: false,
             hover: false
@@ -19,6 +21,7 @@ export default function (state = initialState, action) {
       }
     case TOGGLE_TODO:
       return {
+        ...state,
         todos: {
           ...state.todos,
           [action.payload.id]: {
@@ -30,6 +33,7 @@ export default function (state = initialState, action) {
       }
     case HOVER_TODO:
       return {
+        ...state,
         todos: {
           ...state.todos,
           [action.payload.id]: {
