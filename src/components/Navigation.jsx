@@ -15,17 +15,17 @@ const Navigation = ({intl, setLocale}) => (
     <Nav>
       <NavItem
         componentClass={Link}
-        href="/todos"
-        to="/todos"
-      >
-        Todos
-      </NavItem>
-      <NavItem
-        componentClass={Link}
         href="/about"
         to="/about"
       >
         About
+      </NavItem>
+      <NavItem
+        componentClass={Link}
+        href="/todos"
+        to="/todos"
+      >
+        Todos
       </NavItem>
     </Nav>
     <Nav pullRight>

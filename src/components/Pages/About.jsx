@@ -1,8 +1,13 @@
 import React from 'react'
 import { Grid } from 'react-bootstrap'
+import Banner from '../Banner'
 
 export default () => (
   <Grid>
-    <h1>About</h1>
+    <Banner
+      title="About"
+      subtitle="Things and stuff"
+      clickHandler={e => alert('Alerts are gross!!')}
+    />
   </Grid>
 )
