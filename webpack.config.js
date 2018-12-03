@@ -10,6 +10,8 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   entry: [
+    'babel-polyfill',
+    'whatwg-fetch',
     'react-hot-loader/patch',
     APP_DIR + '/index.js',
   ],

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { injectIntl } from 'react-intl'
 import { Grid, Row, Col, Modal } from 'react-bootstrap'
-
 import Banner from '../Banner'
 import BigIcon from '../BigIcon'
 
