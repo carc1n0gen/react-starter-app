@@ -8,6 +8,7 @@
     "watch": "webpack -d --devtool source-maps --watch",
     "dev": "webpack -d --devtool source-maps",
     "prod": "webpack -p",
+    "clean": "bin/clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
