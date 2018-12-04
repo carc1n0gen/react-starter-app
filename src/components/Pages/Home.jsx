@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { injectIntl } from 'react-intl'
-import { Grid, Row, Col, Modal } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import Banner from '../Banner'
 import BigIcon from '../BigIcon'
+import Modal from '../Modal'
 
 class Home extends Component {
   state = {
-    show: false
+    showModal: false
   }
 
-  toggleShow = () => this.setState({ show: !(this.state.show) })
+  toggleShow = () => this.setState({ showModal: !(this.state.showModal) })
 
   render = () => (
     <Grid>
@@ -54,13 +55,11 @@ class Home extends Component {
         </Col>
       </Row>
 
-      <Modal show={this.state.show} onHide={this.toggleShow}>
-        <Modal.Header closeButton>
-          <Modal.Title>Woa a modal!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h2>I got clicked!</h2>
-        </Modal.Body>
+      <Modal title="Woa, a modal!"
+        show={this.state.showModal}
+        onHide={e => this.setState({showModal: false})}
+      >
+        <p>I got clicked!</p>
       </Modal>
     </Grid>
   )
