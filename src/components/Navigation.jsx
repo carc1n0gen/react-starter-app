@@ -1,11 +1,12 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { setLocale } from '../redux/actions'
 
-const Navigation = ({intl, setLocale}) => (
+const Navigation = ({location, intl, setLocale}) => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -15,8 +16,17 @@ const Navigation = ({intl, setLocale}) => (
     <Nav>
       <NavItem
         componentClass={Link}
+        href="/"
+        to="/"
+        active={location.pathname === '/'}
+      >
+        Home
+      </NavItem>
+      <NavItem
+        componentClass={Link}
         href="/about"
         to="/about"
+        active={location.pathname === '/about'}
       >
         About
       </NavItem>
@@ -24,6 +34,7 @@ const Navigation = ({intl, setLocale}) => (
         componentClass={Link}
         href="/todos"
         to="/todos"
+        active={location.pathname === '/todos'}
       >
         Todos
       </NavItem>
@@ -51,5 +62,5 @@ const mapDispatchToProps = {
   setLocale
 }
 
-export default injectIntl(connect(null, mapDispatchToProps)(Navigation))
+export default withRouter(injectIntl(connect(null, mapDispatchToProps)(Navigation)))
 
