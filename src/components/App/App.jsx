@@ -5,10 +5,10 @@ import {
 } from 'react-router-dom'
 import { injectIntl } from 'react-intl'
 import { AnimatedSwitch } from 'react-router-transition'
-import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import Navigation from '../Navigation'
 import * as Pages from '../Pages'
+import Meta from './Meta'
 import './App.scss'
 
 const Wrapper = styled.div`
@@ -25,9 +25,7 @@ const Wrapper = styled.div`
 export default injectIntl(({intl}) => (
   <Router>
     <Wrapper>
-      <Helmet>
-        <html lang={intl.locale} />
-      </Helmet>
+      <Meta />
       <Navigation />
       <AnimatedSwitch
         atEnter={{ opacity: 0 }}
