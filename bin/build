@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const zipFolder = require('zip-folder')
+
+const src = path.join(__dirname, '../dist')
+const dest = './build.zip'
+
+zipFolder(src, dest, console.log)

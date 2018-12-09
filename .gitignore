@@ -60,3 +60,6 @@ typings/
 # Mac shit
 .DS_Store
 
+# Build
+build.zip
+

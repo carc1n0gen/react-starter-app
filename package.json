@@ -8,8 +8,9 @@
     "watch": "webpack -d --devtool source-maps --watch",
     "dev": "webpack -d --devtool source-maps",
     "prod": "webpack -p",
+    "build": "bin/build",
     "clean": "bin/clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet\" && exit 1"
   },
   "author": "",
   "license": "MIT",
@@ -46,6 +47,7 @@
     "styled-components": "^4.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.11.3",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "zip-folder": "^1.0.0"
   }
 }

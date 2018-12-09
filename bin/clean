@@ -21,3 +21,6 @@ function deleteRecursive(dir) {
 }
 
 deleteRecursive(directory)
+try {
+  fs.unlinkSync('./build.zip')
+} catch (e) { /* ignore */ }
