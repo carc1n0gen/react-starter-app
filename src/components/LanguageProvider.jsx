@@ -10,23 +10,16 @@ const messages = {
   'en-CA': en_CA
 }
 const defaultLanguage = 'en-US'
- 
-class LanguageProvider extends Component {
-  render() {
-    const { children, locale } = this.props
-    return (
-      <IntlProvider
-        locale={locale || defaultLanguage}
-        messages={messages[locale || defaultLanguage]}
-      >
-        {React.Children.only(children)}
-      </IntlProvider>
-    )
-  }
-}
 
 const mapStateToProps = state => ({
   locale: getLocale(state)
 })
 
-export default connect(mapStateToProps)(LanguageProvider)
+export default connect(mapStateToProps)(({locale, children}) => (
+  <IntlProvider
+    locale={locale || defaultLanguage}
+    messages={messages[locale || defaultLanguage]}
+  >
+    {React.Children.only(children)}
+  </IntlProvider>
+))

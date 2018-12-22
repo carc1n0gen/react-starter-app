@@ -1,6 +1,5 @@
 import { SET_LOCALE } from '../actionTypes'
 
-
 const initialState = {
   language: {
     locale: navigator.language
