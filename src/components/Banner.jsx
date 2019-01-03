@@ -3,16 +3,16 @@ import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Jumbotron, Button } from 'react-bootstrap'
 
-const Banner = (props) => (
+const Banner = ({title, subtitle, clickHandler}) => (
   <Jumbotron>
-    <h1>{props.title}</h1>
+    <h1>{title}</h1>
     <p>
-      {props.subtitle &&
-        <span>{props.subtitle}</span>
+      {subtitle &&
+        <span>{subtitle}</span>
       }
       &nbsp;
-      {props.clickHandler &&
-        <Button bsStyle="primary" onClick={props.clickHandler}>
+      {clickHandler &&
+        <Button bsStyle="primary" onClick={clickHandler}>
           Click me
         </Button>
       }

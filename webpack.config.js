@@ -25,14 +25,14 @@ module.exports = {
   },
   module : {
     loaders : [{
-      test : /\.jsx?/,
+      test : /\.jsx?$/,
       include : APP_DIR,
       loader : 'babel-loader'
     },{
       test: /\.json$/,
       loader: 'json-loader'
     },{
-      test: /\.scss/,
+      test: /\.scss$/,
       use: extractSass.extract({
         use: [{
           loader: 'css-loader'

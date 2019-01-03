@@ -10,9 +10,9 @@ const BigIconWrapper = styled.div`
   font-size: 8em;
 `
 
-const BigIcon = (props) => (
+const BigIcon = ({icon}) => (
   <BigIconWrapper>
-    <Glyphicon glyph={props.icon} />
+    <Glyphicon glyph={icon} />
   </BigIconWrapper>
 )
 

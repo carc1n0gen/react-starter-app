@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default injectIntl(({intl}) => (
+export default injectIntl(() => (
   <Router>
     <Wrapper>
       <Meta />
