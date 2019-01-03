@@ -1,4 +1,4 @@
-import { SET_LOCALE } from '../actionTypes'
+import { SET_LOCALE } from '../actions'
 
 const initialState = {
   language: {

@@ -1,5 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, HOVER_TODO, SET_LOCALE } from "./actionTypes"
-
+export const ADD_TODO = 'ADD_TODO'
 export const addTodo = text => ({
   type: ADD_TODO,
   payload: {
@@ -7,6 +6,7 @@ export const addTodo = text => ({
   }
 })
 
+export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,
   payload: {
@@ -14,6 +14,7 @@ export const toggleTodo = id => ({
   }
 })
 
+export const HOVER_TODO = 'HOVER_TODO'
 export const hoverTodo = id => ({
   type: HOVER_TODO,
   payload: {
@@ -21,6 +22,7 @@ export const hoverTodo = id => ({
   }
 })
 
+export const SET_LOCALE = 'SET_LOCALE'
 export const setLocale = locale => ({
   type: SET_LOCALE,
   payload: {
