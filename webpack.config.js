@@ -1,16 +1,12 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
-const extractSass = new ExtractTextPlugin({
-    filename: 'bundle.css',
-    disable: process.env.NODE_ENV === 'development'
-});
 
 module.exports = {
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'whatwg-fetch',
     'react-hot-loader/patch',
     APP_DIR + '/index.js',
@@ -23,31 +19,37 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  module : {
-    loaders : [{
+  module: {
+    rules: [{
       test : /\.jsx?$/,
       include : APP_DIR,
       loader : 'babel-loader'
     },{
-      test: /\.json$/,
-      loader: 'json-loader'
-    },{
       test: /\.scss$/,
-      use: extractSass.extract({
-        use: [{
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader 
+        },
+        {
           loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }],
-        fallback: 'style-loader'
-      })
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMaps: true
+          }
+        }
+      ]
     },{
       test: /\.(ttf|eot|svg|woff|woff2)$/,
       loader: 'file-loader?name=[name].[ext]&outputPath=fonts/'
     }]
   },
   plugins: [
-    extractSass
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css',
+      disable: process.env.NODE_ENV === 'development'
+    })
   ],
   devServer: {
     historyApiFallback: true,
