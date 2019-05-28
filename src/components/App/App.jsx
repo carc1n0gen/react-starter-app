@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import { injectIntl } from 'react-intl'
 import { AnimatedSwitch } from 'react-router-transition'
 import styled from 'styled-components'
 import Navigation from '../Navigation'
@@ -22,7 +21,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default injectIntl(() => (
+export default () => (
   <Router>
     <Wrapper>
       <Meta />
@@ -40,4 +39,4 @@ export default injectIntl(() => (
       </AnimatedSwitch>
     </Wrapper>
   </Router>
-))
+)

@@ -1,10 +1,6 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
-import { setLocale } from '../redux/actions'
 
 const Navigation = ({location, intl, setLocale}) => (
   <Navbar>
@@ -58,9 +54,4 @@ const Navigation = ({location, intl, setLocale}) => (
   </Navbar>
 )
 
-const mapDispatchToProps = {
-  setLocale
-}
-
-export default withRouter(injectIntl(connect(null, mapDispatchToProps)(Navigation)))
-
+export default Navigation
