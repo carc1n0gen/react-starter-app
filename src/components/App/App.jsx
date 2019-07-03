@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 import { AnimatedSwitch } from 'react-router-transition'
-import styled from 'styled-components'
 
 import Navigation from 'components/Navigation'
 import * as Pages from 'components/Pages'
@@ -29,7 +28,7 @@ export default function ({ locale }) {
       messages={messages[selectedLocale]}
     >
       <Router>
-        <React.Fragment>
+        <>
           <Meta />
           <Navigation />
           <AnimatedSwitch
@@ -43,7 +42,7 @@ export default function ({ locale }) {
             <Route path="/about" component={Pages.About} />
             <Route component={Pages.NotFound} />
           </AnimatedSwitch>
-        </React.Fragment>
+        </>
       </Router>
     </IntlProvider>
   )

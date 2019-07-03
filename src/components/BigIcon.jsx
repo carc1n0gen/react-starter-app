@@ -8,6 +8,7 @@ const BigIconWrapper = styled.div`
   display: block;
   text-align: center;
   font-size: 8em;
+  color: #666;
 `
 
 const BigIcon = ({icon}) => (
