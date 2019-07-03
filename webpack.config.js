@@ -17,7 +17,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    modules: [path.join(__dirname, 'src'), 'node_modules']
   },
   module: {
     rules: [{
@@ -43,6 +44,9 @@ module.exports = {
     },{
       test: /\.(ttf|eot|svg|woff|woff2)$/,
       loader: 'file-loader?name=[name].[ext]&outputPath=fonts/'
+    },{
+      test: /\.txt$/,
+      loader: 'raw-loader'
     }]
   },
   plugins: [

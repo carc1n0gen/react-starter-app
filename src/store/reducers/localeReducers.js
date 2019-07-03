@@ -1,18 +1,14 @@
 import { SET_LOCALE } from '../actions'
 
 const initialState = {
-  language: {
-    locale: navigator.language
-  }
+  locale: navigator.language
 }
 
 export default function (state = initialState, action) {
   switch(action.type) {
     case SET_LOCALE:
       return {
-        language: {
-          locale: action.payload.locale
-        }
+        locale: action.payload.locale
       }
     default:
       return state

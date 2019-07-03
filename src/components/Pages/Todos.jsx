@@ -1,42 +1,30 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Col, Button, FormGroup, ControlLabel, FormControl, ListGroup, 
   ListGroupItem, Glyphicon, Badge } from 'react-bootstrap'
-import { addTodo, toggleTodo, hoverTodo } from '../../redux/actions'
-import { getTodos } from '../../redux/selectors'
 
-class Todos extends Component {
-  state = {
-    input: ''
-  }
+import { addTodo, toggleTodo, hoverTodo } from 'store/actions'
+import { getTodos } from 'store/selectors'
 
-  handleAddTodo = e => {
-    e.preventDefault()
-    if (!this.state.input.trim()) return
+function handleAddTodo(input, setInput, addTodo) {
+  if (!input.trim()) return
+  addTodo(input)
+  setInput('')
+}
 
-    this.props.addTodo(this.state.input)
-    this.setState({ input: '' })
-  }
-
-  handleToggleTodo = id => {
-    this.props.toggleTodo(id)
-  }
-
-  handleHoverTodo = id => {
-    this.props.hoverTodo(id)
-  }
-
-  render = () => (
+function Todos({ todos, addTodo, toggleTodo, hoverTodo }) {
+  const [input, setInput] = useState('')
+  return (
     <Grid>
       <Col md={6} mdOffset={3}>
-        <form onSubmit={this.handleAddTodo}>
+        <form onSubmit={e => { e.preventDefault(); handleAddTodo(input, setInput, addTodo) }}>
           <FormGroup controlId="text">
             <ControlLabel>Description</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.input}
+              value={input}
               placeholder="todo..."
-              onChange={e => this.setState({ input: e.target.value })}
+              onChange={e => setInput(e.target.value)}
             />
           </FormGroup>
           <Button bsSize="xs" bsStyle="success" type="submit">
@@ -46,17 +34,17 @@ class Todos extends Component {
 
         <h1>In Progress</h1>
 
-        {!this.props.todos.length &&
+        {!todos.length &&
           <p>There are no todos yet.</p>
         }
 
         <ListGroup>
-          {this.props.todos.filter(todo => !todo.completed).map((todo) => (
+          {todos.filter(todo => !todo.completed).map((todo) => (
             <ListGroupItem 
               key={todo.id}
-              onClick={e => this.handleToggleTodo(todo.id)}
-              onMouseOver={e => this.handleHoverTodo(todo.id)}
-              onMouseOut={e => this.handleHoverTodo(todo.id)}
+              onClick={e => toggleTodo(todo.id)}
+              onMouseOver={e => hoverTodo(todo.id)}
+              onMouseOut={e => hoverTodo(todo.id)}
             >
               {todo.hover &&
                 <Badge><Glyphicon glyph="ok" /></Badge>
@@ -68,12 +56,12 @@ class Todos extends Component {
 
         <h1>Completed</h1>
         <ListGroup>
-          {this.props.todos.filter(todo => todo.completed).map((todo) => (
+          {todos.filter(todo => todo.completed).map((todo) => (
             <ListGroupItem
               key={todo.id}
-              onClick={e => this.handleToggleTodo(todo.id)}
-              onMouseOver={e => this.handleHoverTodo(todo.id)}
-              onMouseOut={e => this.handleHoverTodo(todo.id)}
+              onClick={e => toggleTodo(todo.id)}
+              onMouseOver={e => hoverTodo(todo.id)}
+              onMouseOut={e => hoverTodo(todo.id)}
             >
               {todo.hover ?
                 <Badge><Glyphicon glyph="refresh" /></Badge> :

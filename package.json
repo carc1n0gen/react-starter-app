@@ -11,7 +11,7 @@
     "clean": "bin/clean",
     "test": "echo \"No tests yet\" && exit 1"
   },
-  "author": "",
+  "author": "Carson Evans",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
@@ -31,9 +31,10 @@
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.9.3",
-    "react": "^16.0.0",
+    "raw-loader": "^3.0.0",
+    "react": "^16.8.6",
     "react-bootstrap": "^0.32.3",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^3.1.1",
     "react-intl": "^2.7.2",

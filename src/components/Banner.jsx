@@ -18,8 +18,7 @@ const Banner = ({title, subtitle, clickHandler}) => (
       }
     </p>
     <p>
-      <span>The following word uses react-intl: </span>
-      <FormattedMessage id="banner.word.color" />
+      The following word uses react-intl: <FormattedMessage id="banner.word.color" />
     </p>
   </Jumbotron>
 )

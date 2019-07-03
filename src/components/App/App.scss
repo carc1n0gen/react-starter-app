@@ -1,2 +1,11 @@
 @import 'variables';
 @import 'bootstrap';
+
+.switch-wrapper {
+    position: relative;
+}
+  
+.switch-wrapper > div {
+    position: absolute;
+    width: 100%
+}

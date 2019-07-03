@@ -2,8 +2,9 @@ import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
+
+import { setLocale } from 'store/actions'
 import Navigation from './Navigation'
-import { setLocale } from '../../redux/actions'
 
 const mapDispatchToProps = {
   setLocale

@@ -1,7 +1,7 @@
-export const getLocaleState = store => store.localeReducers
-export const getTodosState = store => store.todoReducers
+export const getLocaleState = store => store.locale
+export const getTodosState = store => store.todo
 
-export const getLocale = store => getLocaleState(store).language.locale
+export const getLocale = store => getLocaleState(store).locale
 
 export const getTodos = store => 
   Object.keys(getTodosState(store).todos).map(key => {
