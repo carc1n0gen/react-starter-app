@@ -3,18 +3,21 @@ import { Grid, Col, Button, FormGroup, ControlLabel, FormControl} from 'react-bo
 
 import TodoList from './TodoList'
 
-function handleAddTodo(input, setInput, addTodo) {
-  if (!input.trim()) return
-  addTodo(input)
-  setInput('')
-}
-
 export default function Todos({ todos, addTodo }) {
   const [input, setInput] = useState('')
+
+  function handleAddTodo(e) {
+    e.preventDefault()
+    
+    if (!input.trim()) return
+    addTodo(input)
+    setInput('')
+  }
+
   return (
     <Grid>
       <Col md={6} mdOffset={3}>
-        <form onSubmit={e => { e.preventDefault(); handleAddTodo(input, setInput, addTodo) }}>
+        <form onSubmit={handleAddTodo}>
           <FormGroup controlId="text">
             <ControlLabel>Description</ControlLabel>
             <FormControl
