@@ -8,46 +8,46 @@ const initialState = {
 // Ever wondered what immutable object manipulation looks like without using
 // a library like immutableJS? Well here ya go in all its terrible glory!
 
-const addTodo = (state, payload) => ({
+const addTodo = (state, action) => ({
   nextId: state.nextId + 1,
   todos: {
     ...state.todos,
     [state.nextId]: {
-      text: payload.text,
+      text: action.text,
       completed: false,
       hover: false
     }
   }
 })
 
-const toggleTodo = (state, payload) => ({
+const toggleTodo = (state, action) => ({
   ...state,
   todos: {
     ...state.todos,
-    [payload.id]: {
-      ...state.todos[payload.id],
-      completed: !state.todos[payload.id].completed,
+    [action.todoId]: {
+      ...state.todos[action.todoId],
+      completed: !state.todos[action.todoId].completed,
       hover: false
     }
   }
 })
 
-const hoverTodo = (state, payload) => ({
+const hoverTodo = (state, action) => ({
   ...state,
   todos: {
     ...state.todos,
-    [payload.id]: {
-      ...state.todos[payload.id],
-      hover: !state.todos[payload.id].hover
+    [action.todoId]: {
+      ...state.todos[action.todoId],
+      hover: !state.todos[action.todoId].hover
     }
   }
 })
 
 export default function (state = initialState, action) {
   switch(action.type) {
-    case ADD_TODO: return addTodo(state, action.payload)
-    case TOGGLE_TODO: return toggleTodo(state, action.payload)
-    case HOVER_TODO: return hoverTodo(state, action.payload)
+    case ADD_TODO: return addTodo(state, action)
+    case TOGGLE_TODO: return toggleTodo(state, action)
+    case HOVER_TODO: return hoverTodo(state, action)
     default:
       return state
   }

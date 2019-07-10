@@ -8,7 +8,7 @@ export default function (state = initialState, action) {
   switch(action.type) {
     case SET_LOCALE:
       return {
-        locale: action.payload.locale
+        locale: action.locale
       }
     default:
       return state
