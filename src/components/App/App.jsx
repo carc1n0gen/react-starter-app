@@ -3,30 +3,26 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import { IntlProvider } from 'react-intl'
 import { AnimatedSwitch } from 'react-router-transition'
 
+import LocaleProvider from 'components/Contexts/LocaleContext'
+import TodosProvider from 'components/Contexts/TodosContext'
 import Navigation from 'components/Navigation'
 import * as Pages from 'components/Pages'
 import Meta from './Meta'
-import en_US from 'i18n/en_US'
-import en_CA from 'i18n/en_CA'
 import './App.scss'
 
-const locales = new Set(['en-US', 'en-CA'])
-const messages = {
-  'en-US': en_US,
-  'en-CA': en_CA
-}
-const defaultLocale = 'en-US'
+const CombinedProviders = ({ children }) => (
+  <LocaleProvider>
+    <TodosProvider>
+      {children}
+    </TodosProvider>
+  </LocaleProvider>
+)
 
-export default function ({ locale }) {
-  const selectedLocale = locales.has(locale) ? locale : defaultLocale
+export default function App() {
   return (
-    <IntlProvider
-      locale={selectedLocale}
-      messages={messages[selectedLocale]}
-    >
+    <CombinedProviders>
       <Router>
         <>
           <Meta />
@@ -44,6 +40,6 @@ export default function ({ locale }) {
           </AnimatedSwitch>
         </>
       </Router>
-    </IntlProvider>
+    </CombinedProviders>
   )
 }

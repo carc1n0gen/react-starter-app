@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 
-const Navigation = ({location, intl, setLocale}) => (
+const Navigation = ({location, intl, localeContext}) => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -39,13 +39,13 @@ const Navigation = ({location, intl, setLocale}) => (
       <NavDropdown title={`Language: ${intl.locale}`} id="language-dropdown">
         <MenuItem 
           disabled={intl.locale === 'en-US'}
-          onClick={e => setLocale('en-US')}
+          onClick={e => localeContext.setLocale('en-US')}
         >
           en-US
         </MenuItem>
         <MenuItem 
           disabled={intl.locale === 'en-CA'}
-          onClick={e => setLocale('en-CA')}
+          onClick={e => localeContext.setLocale('en-CA')}
         >
           en-CA
         </MenuItem>

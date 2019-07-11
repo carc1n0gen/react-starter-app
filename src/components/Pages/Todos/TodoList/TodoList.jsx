@@ -11,18 +11,18 @@ function renderBadge(todo) {
   }
 }
 
-export default function({ todos, toggleTodo, hoverTodo }) {
-    return !todos.length 
+export default function TodoList({ todos, todosContext }) {
+    return !todos.length
       ? (
-        <p>Nothing here yet</p> 
+        <p>Nothing here yet</p>
       ) : (
         <ListGroup>{
           todos.map((todo) => (
             <ListGroupItem 
               key={todo.id}
-              onClick={e => toggleTodo(todo.id)}
-              onMouseOver={e => hoverTodo(todo.id)}
-              onMouseOut={e => hoverTodo(todo.id)}
+              onClick={() => todosContext.toggleTodo(todo.id)}
+              onMouseOver={() => todosContext.hoverTodo(todo.id)}
+              onMouseOut={() => todosContext.hoverTodo(todo.id)}
             >
               {renderBadge(todo)}
               {todo.text}

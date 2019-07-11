@@ -1,5 +1,4 @@
-import React from 'react'
-import { compose } from 'redux';
+import compose from 'compose-function';
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router-dom'
 

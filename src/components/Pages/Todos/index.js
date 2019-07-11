@@ -1,17 +1,5 @@
-import { connect } from 'react-redux'
-
-import { addTodo } from 'store/actions'
-import { getTodos } from 'store/selectors'
 import Todos from './Todos'
 
-function mapStateToProps(state) {
-  return {
-    todos: getTodos(state)
-  }
-}
+import { withTodos } from 'components/Contexts/TodosContext'
 
-const mapDispatchToProps = {
-  addTodo
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Todos)
+export default withTodos(Todos)

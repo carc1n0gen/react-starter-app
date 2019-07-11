@@ -1,13 +1,7 @@
-import { compose } from 'redux'
+import compose from 'compose-function'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
 
-import { setLocale } from 'store/actions'
+import { withLocale } from 'components/Contexts/LocaleContext'
 import Navigation from './Navigation'
 
-const mapDispatchToProps = {
-  setLocale
-}
-  
-export default compose(withRouter, injectIntl, connect(null, mapDispatchToProps))(Navigation)
+export default compose(withRouter, withLocale)(Navigation)

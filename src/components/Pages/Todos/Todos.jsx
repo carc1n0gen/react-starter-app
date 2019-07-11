@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid, Col, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
 
 import TodoList from './TodoList'
 
-export default function Todos({ todos, addTodo }) {
-  const [input, setInput] = useState('')
+export default function Todos({ todosContext }) {
+  const [input, setInput] = React.useState('')
 
   function handleAddTodo(e) {
     e.preventDefault()
-    
+
     if (!input.trim()) return
-    addTodo(input)
+    todosContext.addTodo(input)
     setInput('')
   }
 
@@ -33,10 +33,10 @@ export default function Todos({ todos, addTodo }) {
         </form>
 
         <h1>In Progress</h1>
-        <TodoList todos={todos.filter(todo => !todo.completed)} />
+        <TodoList todos={todosContext.todos.filter(todo => !todo.completed)} />
 
         <h1>Completed</h1>
-        <TodoList todos={todos.filter(todo => todo.completed)} />
+        <TodoList todos={todosContext.todos.filter(todo => todo.completed)} />
       </Col>
     </Grid>
   )

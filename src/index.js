@@ -1,10 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 
 import App from 'components/App'
-import store from 'store'
 
 // Set up global things
 // try {
@@ -16,9 +14,7 @@ import store from 'store'
 const render = Component => {
   ReactDOM.render(
     React.createElement(AppContainer, {},
-      React.createElement(Provider, { store },
-        React.createElement(Component)
-      ),
+      React.createElement(Component)
     ),
     document.getElementById('app')
   )

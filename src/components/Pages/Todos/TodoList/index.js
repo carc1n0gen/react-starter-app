@@ -1,11 +1,5 @@
-import { connect } from 'react-redux'
+import { withTodos } from 'components/Contexts/TodosContext'
 
-import { toggleTodo, hoverTodo } from 'store/actions'
 import TodoList from './TodoList'
 
-const mapDispatchToProps = {
-  toggleTodo,
-  hoverTodo,
-}
-
-export default connect(null, mapDispatchToProps)(TodoList)
+export default withTodos(TodoList)
