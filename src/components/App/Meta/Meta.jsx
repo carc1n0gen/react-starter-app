@@ -16,7 +16,7 @@ function buildTitle(pathname) {
   }
 }
 
-export default ({location, intl}) => (
+export default ({ location, intl }) => (
   <Helmet>
     <html lang={intl.locale} />
     <title>{buildTitle(location.pathname)}</title>

@@ -1,4 +1,3 @@
-
 export const LOCALE_SET = 'LOCALE_SET'
 function setLocale(state, locale) {
   localStorage.setItem('locale', locale)

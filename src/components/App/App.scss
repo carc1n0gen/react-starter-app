@@ -9,3 +9,8 @@
     position: absolute;
     width: 100%
 }
+
+// bootstrap overrides:
+.badge {
+    pointer-events: none;
+}

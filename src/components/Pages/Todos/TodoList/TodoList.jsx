@@ -1,11 +1,16 @@
+import styled from 'styled-components'
 import React from 'react'
 import { ListGroup, ListGroupItem, Badge, Glyphicon } from 'react-bootstrap'
 
+const IconWrapper = styled.span`
+  font-size: 11px;
+`
+
 function renderBadge(todo) {
   if (todo.completed && todo.hover) {
-    return <Badge><Glyphicon glyph="refresh" /></Badge>
+    return <Badge><IconWrapper><Glyphicon glyph="refresh" /></IconWrapper></Badge>
   } else if (todo.completed && !todo.hover || !todo.completed && todo.hover) {
-    return <Badge><Glyphicon glyph="ok" /></Badge>
+    return <Badge><IconWrapper><Glyphicon glyph="ok" /></IconWrapper></Badge>
   } else {
     return null
   }
