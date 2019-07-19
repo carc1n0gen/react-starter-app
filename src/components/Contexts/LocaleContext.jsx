@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { createContext, useCallback, useReducer } from 'react'
 import { IntlProvider, injectIntl } from 'react-intl'
 
 import reducer, { LOCALE_SET } from './LocaleContextReducer'
 import en_US from 'i18n/en_US'
 import en_CA from 'i18n/en_CA'
 
-const LocaleContext = React.createContext()
+export const LocaleContext = createContext()
 LocaleContext.displayName = 'LocaleContext'
 
 const locales = new Set(['en-US', 'en-CA'])
@@ -35,11 +35,11 @@ const initialState = {
 }
 
 export default function LocaleContextWrapper({ children }) {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  function setLocale(locale) {
+  const setLocale = useCallback((locale) => {
     dispatch({ type: LOCALE_SET, locale })
-  }
+  })
 
   return (
     <LocaleContext.Provider
@@ -56,14 +56,4 @@ export default function LocaleContextWrapper({ children }) {
       </IntlProvider>
     </LocaleContext.Provider>
   )
-}
-
-export function withLocale(Component) {
-  return injectIntl(function LocaleContextInjector(props) {
-    return (
-      <LocaleContext.Consumer>
-        {context => <Component {...props} localeContext={context} />}
-      </LocaleContext.Consumer>
-    )
-  })
 }

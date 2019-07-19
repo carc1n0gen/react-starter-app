@@ -6,7 +6,7 @@ import Banner from 'components/Banner'
 import BigIcon from 'components/BigIcon'
 import Modal from 'components/Modal'
 
-export default function () {
+export default function Home() {
   const [showModal, setShowModal] = useState(false)
   return (
     <Grid>

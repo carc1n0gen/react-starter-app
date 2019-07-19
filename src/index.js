@@ -11,7 +11,7 @@ import App from 'components/App'
 // } catch (e) {}
 
 // Render the app
-const render = Component => {
+function render(Component) {
   ReactDOM.render(
     React.createElement(AppContainer, {},
       React.createElement(Component)

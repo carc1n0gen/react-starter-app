@@ -1,13 +1,15 @@
 import React from 'react'
-import { Modal } from 'react-bootstrap'
+import { Modal as ReactModal } from 'react-bootstrap'
 
-export default ({title, show, onHide, children}) => (
-  <Modal show={show} onHide={onHide}>
-    <Modal.Header closeButton>
-      <Modal.Title>{title}</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      {children}
-    </Modal.Body>
-  </Modal>
-)
+export default function Modal({ title, show, onHide, children }) {
+  return (
+    <ReactModal show={show} onHide={onHide}>
+      <ReactModal.Header closeButton>
+        <ReactModal.Title>{title}</ReactModal.Title>
+      </ReactModal.Header>
+      <ReactModal.Body>
+        {children}
+      </ReactModal.Body>
+    </ReactModal>
+  )
+}

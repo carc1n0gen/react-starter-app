@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useReducer, useCallback } from 'react'
 
 import reducer, { TODO_ADD, TODO_TOGGLE, TODO_HOVER } from './TodosContextReducer'
 
-const TodosContext = React.createContext()
+export const TodosContext = React.createContext()
 TodosContext.displayName = 'TodosContext'
 
 const initialState = {
@@ -11,28 +11,19 @@ const initialState = {
 }
 
 export default function TodosContextWrapper({ children }) {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  function getTodos() {
-    return Object.keys(state.todos).map((key) => ({
+  const getTodos = useCallback(() =>
+    Object.keys(state.todos).map((key) => ({
       id: key,
       text: state.todos[key].text,
       completed: state.todos[key].completed,
       hover: state.todos[key].hover
     }))
-  }
-
-  function addTodo(text) {
-    dispatch({ type: TODO_ADD, text })
-  }
-
-  function toggleTodo(todoId) {
-    dispatch({ type: TODO_TOGGLE, todoId })
-  }
-
-  function hoverTodo(todoId) {
-    dispatch({ type: TODO_HOVER, todoId })
-  }
+  )
+  const addTodo = useCallback(text => dispatch({ type: TODO_ADD, text }))
+  const toggleTodo = useCallback(todoId => dispatch({ type: TODO_TOGGLE, todoId }))
+  const hoverTodo = useCallback(todoId => dispatch({ type: TODO_HOVER, todoId }))
 
   return (
     <TodosContext.Provider value={{ 
@@ -44,14 +35,4 @@ export default function TodosContextWrapper({ children }) {
       {children}
     </TodosContext.Provider>
   )
-}
-
-export function withTodos(Component) {
-  return function TodosContextInjector(props) {
-    return (
-      <TodosContext.Consumer>
-        {context => <Component {...props} todosContext={context} />}
-      </TodosContext.Consumer>
-    )
-  }
 }

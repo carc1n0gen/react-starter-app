@@ -11,14 +11,14 @@ const BigIconWrapper = styled.div`
   color: #666;
 `
 
-const BigIcon = ({icon}) => (
-  <BigIconWrapper>
-    <Glyphicon glyph={icon} />
-  </BigIconWrapper>
-)
+export default function BigIcon({ icon }) { 
+  return (
+    <BigIconWrapper>
+      <Glyphicon glyph={icon} />
+    </BigIconWrapper>
+  )
+}
 
 BigIcon.propTypes = {
   icon: PropTypes.string.isRequired
 }
-
-export default BigIcon
