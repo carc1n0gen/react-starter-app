@@ -2,15 +2,15 @@
 @import 'bootstrap';
 
 .switch-wrapper {
-    position: relative;
+  position: relative;
 }
-  
+
 .switch-wrapper > div {
-    position: absolute;
-    width: 100%
+  position: absolute;
+  width: 100%;
 }
 
 // bootstrap overrides:
 .badge {
-    pointer-events: none;
+  pointer-events: none;
 }
