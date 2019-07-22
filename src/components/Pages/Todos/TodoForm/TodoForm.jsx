@@ -1,19 +1,20 @@
-import React, { useState, useContext, useCallback } from 'react'
-import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
-import PropTypes from 'prop-types'
+import React, { useState, useContext, useCallback } from 'react';
+import {
+  Button, FormGroup, ControlLabel, FormControl,
+} from 'react-bootstrap';
 
-import { TodosContext } from 'components/Contexts/TodosContext'
+import { TodosContext } from 'components/Contexts/TodosContext';
 
 export default function TodoForm() {
-  const [input, setInput] = useState('')
-  const { addTodo } = useContext(TodosContext)
+  const [input, setInput] = useState('');
+  const { addTodo } = useContext(TodosContext);
   const onSubmit = useCallback((e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!input.trim()) return
-    addTodo(input)
-    setInput('')
-  })
+    if (!input.trim()) return;
+    addTodo(input);
+    setInput('');
+  });
 
   return (
     <form onSubmit={onSubmit}>
@@ -30,5 +31,5 @@ export default function TodoForm() {
         + create todo
       </Button>
     </form>
-  )
+  );
 }

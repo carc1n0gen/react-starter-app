@@ -1,26 +1,24 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 
-const directory = path.join(__dirname, '../dist')
-const whitelist = new Set(['.gitignore', 'index.html'])
+const directory = path.join(__dirname, '../dist');
+const whitelist = new Set(['.gitignore', 'index.html']);
 
 function deleteRecursive(dir) {
   fs.readdirSync(dir).forEach((file) => {
-    const nextPath = path.join(dir, file)
+    const nextPath = path.join(dir, file);
     if (fs.lstatSync(nextPath).isDirectory()) {
-      deleteRecursive(nextPath)
-      fs.rmdirSync(nextPath)
-    } else {
-      if (!whitelist.has(file)) {
-        fs.unlinkSync(nextPath)
-      }
+      deleteRecursive(nextPath);
+      fs.rmdirSync(nextPath);
+    } else if (!whitelist.has(file)) {
+      fs.unlinkSync(nextPath);
     }
-  })
+  });
 }
 
-deleteRecursive(directory)
-try {
-  fs.unlinkSync('./build.zip')
-} catch (e) { /* ignore */ }
+deleteRecursive(directory);
+// try {
+//   fs.unlinkSync('./build.zip');
+// } catch (e) { /* ignore */ }

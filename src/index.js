@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
-import App from 'components/App'
+import App from 'components/App';
 
 // Set up global things
 // try {
@@ -14,18 +14,18 @@ import App from 'components/App'
 function render(Component) {
   ReactDOM.render(
     React.createElement(AppContainer, {},
-      React.createElement(Component)
-    ),
-    document.getElementById('app')
-  )
+      React.createElement(Component)),
+    document.getElementById('app'),
+  );
 }
 
-render(App)
+render(App);
 
 // Hot reloading
 if (module.hot) {
   module.hot.accept('components/App', () => {
-    const nextContainer = require('components/App').default
-    render(nextContainer)
-  })
+    // eslint-disable-next-line global-require
+    const nextContainer = require('components/App').default;
+    render(nextContainer);
+  });
 }

@@ -1,11 +1,14 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import {
+  Navbar, Nav, NavItem, NavDropdown, MenuItem,
+} from 'react-bootstrap';
 
-import { LocaleContext } from 'components/Contexts/LocaleContext'
+import { LocaleContext } from 'components/Contexts/LocaleContext';
 
 export default function Navigation({ location }) {
-  const { locale, setLocale } = useContext(LocaleContext)
+  const { locale, setLocale } = useContext(LocaleContext);
   return (
     <Navbar>
       <Navbar.Header>
@@ -41,13 +44,13 @@ export default function Navigation({ location }) {
       </Nav>
       <Nav pullRight>
         <NavDropdown title={`Language: ${locale}`} id="language-dropdown">
-          <MenuItem 
+          <MenuItem
             disabled={locale === 'en-US'}
             onClick={() => setLocale('en-US')}
           >
             en-US
           </MenuItem>
-          <MenuItem 
+          <MenuItem
             disabled={locale === 'en-CA'}
             onClick={() => setLocale('en-CA')}
           >
@@ -56,5 +59,17 @@ export default function Navigation({ location }) {
         </NavDropdown>
       </Nav>
     </Navbar>
-  )
+  );
 }
+
+Navigation.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+};
+
+Navigation.defaultProps = {
+  location: {
+    pathname: '',
+  },
+};

@@ -1,51 +1,52 @@
-import React, { createContext, useCallback, useReducer } from 'react'
-import { IntlProvider, injectIntl } from 'react-intl'
+import React, { createContext, useCallback, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import { IntlProvider } from 'react-intl';
 
-import reducer, { LOCALE_SET } from './LocaleContextReducer'
-import en_US from 'i18n/en_US'
-import en_CA from 'i18n/en_CA'
+import enUS from 'i18n/en_US';
+import enCA from 'i18n/en_CA';
+import reducer, { LOCALE_SET } from './LocaleContextReducer';
 
-export const LocaleContext = createContext()
-LocaleContext.displayName = 'LocaleContext'
+export const LocaleContext = createContext();
+LocaleContext.displayName = 'LocaleContext';
 
-const locales = new Set(['en-US', 'en-CA'])
+const locales = new Set(['en-US', 'en-CA']);
 const messages = {
-  'en-US': en_US,
-  'en-CA': en_CA
-}
-const defaultLocale = 'en-US'
+  'en-US': enUS,
+  'en-CA': enCA,
+};
+const defaultLocale = 'en-US';
 
 function getLocale() {
-  const storedLocale = localStorage.getItem('locale')
+  const storedLocale = localStorage.getItem('locale');
   if (storedLocale) {
-    return storedLocale
+    return storedLocale;
   }
 
-  const browserLocale = navigator.language
+  const browserLocale = navigator.language;
   if (locales.has(browserLocale)) {
-    localStorage.setItem('locale', browserLocale)
-    return browserLocale
+    localStorage.setItem('locale', browserLocale);
+    return browserLocale;
   }
 
-  return defaultLocale
+  return defaultLocale;
 }
 
 const initialState = {
-  locale: getLocale()
-}
+  locale: getLocale(),
+};
 
 export default function LocaleContextWrapper({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const setLocale = useCallback((locale) => {
-    dispatch({ type: LOCALE_SET, locale })
-  })
+    dispatch({ type: LOCALE_SET, locale });
+  });
 
   return (
     <LocaleContext.Provider
       value={{
         locale: state.locale,
-        setLocale
+        setLocale,
       }}
     >
       <IntlProvider
@@ -55,5 +56,9 @@ export default function LocaleContextWrapper({ children }) {
         {children}
       </IntlProvider>
     </LocaleContext.Provider>
-  )
+  );
 }
+
+LocaleContextWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};

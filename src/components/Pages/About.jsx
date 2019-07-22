@@ -1,6 +1,6 @@
-import React from 'react'
-import { Grid } from 'react-bootstrap'
-import Banner from '../Banner'
+import React from 'react';
+import { Grid } from 'react-bootstrap';
+import Banner from '../Banner';
 
 export default function About() {
   return (
@@ -8,8 +8,8 @@ export default function About() {
       <Banner
         title="About"
         subtitle="Things and stuff"
-        clickHandler={e => alert('Alerts are gross!!')}
+        clickHandler={() => alert('Alerts are gross!!')}
       />
     </Grid>
-  )
+  );
 }

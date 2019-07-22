@@ -1,16 +1,17 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Route,
-} from 'react-router-dom'
-import { AnimatedSwitch } from 'react-router-transition'
+} from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 
-import LocaleProvider from 'components/Contexts/LocaleContext'
-import TodosProvider from 'components/Contexts/TodosContext'
-import Navigation from 'components/Navigation'
-import * as Pages from 'components/Pages'
-import Meta from './Meta'
-import './App.scss'
+import LocaleProvider from 'components/Contexts/LocaleContext';
+import TodosProvider from 'components/Contexts/TodosContext';
+import Navigation from 'components/Navigation';
+import * as Pages from 'components/Pages';
+import Meta from './Meta';
+import './App.scss';
 
 const CombinedProviders = ({ children }) => (
   <LocaleProvider>
@@ -18,7 +19,11 @@ const CombinedProviders = ({ children }) => (
       {children}
     </TodosProvider>
   </LocaleProvider>
-)
+);
+
+CombinedProviders.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default function App() {
   return (
@@ -41,5 +46,5 @@ export default function App() {
         </>
       </Router>
     </CombinedProviders>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { Grid, Col} from 'react-bootstrap'
+import React from 'react';
+import { Grid, Col } from 'react-bootstrap';
 
-import TodoForm from './TodoForm'
-import TodoList from './TodoList'
+import TodoForm from './TodoForm';
+import TodoList from './TodoList';
 
 export default function Todos() {
   return (
@@ -17,5 +17,5 @@ export default function Todos() {
         <TodoList filter={todo => todo.completed} />
       </Col>
     </Grid>
-  )
+  );
 }
