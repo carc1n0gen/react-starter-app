@@ -12,16 +12,23 @@ const IconWrapper = styled.span`
 `;
 
 function Badge({ todo }) {
-  if (todo.completed && todo.hover) {
-    return <BSBadge><IconWrapper><Glyphicon glyph="refresh" /></IconWrapper></BSBadge>;
-  } if (todo.completed && (!todo.hover || !todo.completed) && todo.hover) {
+  console.log(todo);
+  if ((!todo.completed && todo.hover) || (todo.completed && !todo.hover)) {
     return <BSBadge><IconWrapper><Glyphicon glyph="ok" /></IconWrapper></BSBadge>;
+  }
+  if (todo.completed) {
+    return <BSBadge><IconWrapper><Glyphicon glyph="refresh" /></IconWrapper></BSBadge>;
   }
   return null;
 }
 
 Badge.propTypes = {
-  todo: PropTypes.object.isRequired,
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    hover: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default function TodoList({ filter }) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { intlShape } from 'react-intl';
+import { locationShape } from 'react-router-props';
 import { Helmet } from 'react-helmet';
 
 const ENV = process.env.NODE_ENV || 'production';
@@ -24,8 +24,7 @@ export default function Meta({ location, intl }) {
       <html lang={intl.locale} />
       <title>{buildTitle(location.pathname)}</title>
       {/* This helper is great for debugging positioning of things */}
-      {ENV === 'development'
-      && (
+      {ENV === 'development' && (
         <style>
           {'* { outline: 1px dotted red; }'}
         </style>
@@ -37,4 +36,5 @@ export default function Meta({ location, intl }) {
 
 Meta.propTypes = {
   intl: intlShape.isRequired,
+  location: locationShape.isRequired,
 };
