@@ -12,7 +12,6 @@ const IconWrapper = styled.span`
 `;
 
 function Badge({ todo }) {
-  console.log(todo);
   if ((!todo.completed && todo.hover) || (todo.completed && !todo.hover)) {
     return <BSBadge><IconWrapper><Glyphicon glyph="ok" /></IconWrapper></BSBadge>;
   }
