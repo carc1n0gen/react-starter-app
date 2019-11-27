@@ -3,7 +3,8 @@ import { intlShape } from 'react-intl';
 import { locationShape } from 'react-router-props';
 import { Helmet } from 'react-helmet';
 
-const ENV = process.env.NODE_ENV || 'production';
+// const ENV = process.env.NODE_ENV || 'production';
+const ENV = 'production';
 
 const defaultTitle = 'React Starter App';
 

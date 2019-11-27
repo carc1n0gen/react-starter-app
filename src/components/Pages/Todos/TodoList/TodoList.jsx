@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ListGroup, ListGroupItem, Badge as BSBadge, Glyphicon,
+  ListGroup, ListGroupItem, Badge as BSBadge,
 } from 'react-bootstrap';
+import { FaCheck, FaUndo } from 'react-icons/fa';
 
 import { TodosContext } from 'components/Contexts/TodosContext';
 
@@ -13,10 +14,10 @@ const IconWrapper = styled.span`
 
 function Badge({ todo }) {
   if ((!todo.completed && todo.hover) || (todo.completed && !todo.hover)) {
-    return <BSBadge><IconWrapper><Glyphicon glyph="ok" /></IconWrapper></BSBadge>;
+    return <BSBadge pill variant="secondary"><IconWrapper><FaCheck /></IconWrapper></BSBadge>;
   }
   if (todo.completed) {
-    return <BSBadge><IconWrapper><Glyphicon glyph="refresh" /></IconWrapper></BSBadge>;
+    return <BSBadge pill variant="secondary"><IconWrapper><FaUndo /></IconWrapper></BSBadge>;
   }
   return null;
 }
@@ -32,25 +33,27 @@ Badge.propTypes = {
 
 export default function TodoList({ filter }) {
   const { todos, toggleTodo, hoverTodo } = useContext(TodosContext);
-  return !todos.length
+  const filteredTodos = todos.filter(filter);
+  return !filteredTodos.length
     ? (
       <p>Nothing here yet</p>
     ) : (
       <ListGroup>
         {
-        todos.filter(filter).map(todo => (
-          <ListGroupItem
-            key={todo.id}
-            onClick={() => toggleTodo(todo.id)}
-            onMouseOver={() => hoverTodo(todo.id)}
-            onMouseOut={() => hoverTodo(todo.id)}
-            onFocus={() => hoverTodo(todo.id)}
-            onBlur={() => hoverTodo(todo.id)}
-          >
-            <Badge todo={todo} />
-            {todo.text}
-          </ListGroupItem>
-        ))}
+          filteredTodos.map(todo => (
+            <ListGroupItem
+              key={todo.id}
+              onClick={() => toggleTodo(todo.id)}
+              onMouseOver={() => hoverTodo(todo.id)}
+              onMouseOut={() => hoverTodo(todo.id)}
+              onFocus={() => hoverTodo(todo.id)}
+              onBlur={() => hoverTodo(todo.id)}
+              className="d-flex justify-content-between align-items-center"
+            >
+              {todo.text}
+              <Badge todo={todo} className="ml-auto" />
+            </ListGroupItem>
+          ))}
       </ListGroup>
     );
 }

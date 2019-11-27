@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react';
 import {
-  Button, FormGroup, ControlLabel, FormControl,
+  Button, Form,
 } from 'react-bootstrap';
 
 import { TodosContext } from 'components/Contexts/TodosContext';
@@ -18,16 +18,16 @@ export default function TodoForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <FormGroup controlId="text">
-        <ControlLabel>Description</ControlLabel>
-        <FormControl
+      <Form.Group controlId="text">
+        <Form.Label>Description</Form.Label>
+        <Form.Control
           type="text"
           value={input}
           placeholder="todo..."
           onChange={e => setInput(e.target.value)}
         />
-      </FormGroup>
-      <Button bsSize="xs" bsStyle="success" type="submit">
+      </Form.Group>
+      <Button size="sm" variant="success" type="submit" className="mb-2">
         + create todo
       </Button>
     </form>

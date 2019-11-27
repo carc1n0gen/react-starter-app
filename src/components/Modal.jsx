@@ -6,7 +6,7 @@ export default function Modal({
   title, show, onHide, children,
 }) {
   return (
-    <ReactModal show={show} onHide={onHide}>
+    <ReactModal show={show} onHide={onHide} centered>
       <ReactModal.Header closeButton>
         <ReactModal.Title>{title}</ReactModal.Title>
       </ReactModal.Header>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Glyphicon } from 'react-bootstrap';
 
 const BigIconWrapper = styled.div`
   margin-bottom: 10px;
@@ -14,11 +13,11 @@ const BigIconWrapper = styled.div`
 export default function BigIcon({ icon }) {
   return (
     <BigIconWrapper>
-      <Glyphicon glyph={icon} />
+      { icon }
     </BigIconWrapper>
   );
 }
 
 BigIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaUser, FaHeart, FaStar } from 'react-icons/fa';
 
 import Banner from 'components/Banner';
 import BigIcon from 'components/BigIcon';
@@ -9,7 +10,7 @@ import Modal from 'components/Modal';
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <Grid>
+    <Container>
       <Banner
         title="React Is Cool"
         subtitle="Get'er done!"
@@ -18,17 +19,17 @@ export default function Home() {
 
       <Row>
         <Col sm={4}>
-          <BigIcon icon="user" />
+          <BigIcon icon={<FaUser />} />
           <p><FormattedMessage id="long-text" /></p>
         </Col>
 
         <Col sm={4}>
-          <BigIcon icon="heart" />
+          <BigIcon icon={<FaHeart />} />
           <p><FormattedMessage id="long-text" /></p>
         </Col>
 
         <Col sm={4}>
-          <BigIcon icon="star" />
+          <BigIcon icon={<FaStar />} />
           <p><FormattedMessage id="long-text" /></p>
         </Col>
       </Row>
@@ -40,6 +41,6 @@ export default function Home() {
       >
         <p>I got clicked!</p>
       </Modal>
-    </Grid>
+    </Container>
   );
 }

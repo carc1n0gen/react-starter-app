@@ -14,7 +14,7 @@ export default function Banner({ title, subtitle, clickHandler }) {
         &nbsp;
         {clickHandler
           && (
-            <Button bsStyle="primary" onClick={clickHandler}>
+            <Button variant="primary" onClick={clickHandler}>
               Click me
             </Button>
           )
