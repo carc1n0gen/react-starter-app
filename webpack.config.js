@@ -3,8 +3,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  mode: isProd ? 'production' : 'development',
+  devtool: isProd ? false : 'inline-source-map',
   entry: [
     '@babel/polyfill',
     'whatwg-fetch',
@@ -43,7 +46,11 @@ module.exports = {
       ],
     }, {
       test: /\.(ttf|eot|svg|woff|woff2)$/,
-      loader: 'file-loader?name=[name].[ext]&outputPath=fonts/',
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'fonts/'
+      }
     }, {
       test: /\.txt$/,
       loader: 'raw-loader',
@@ -52,7 +59,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
-      disable: process.env.NODE_ENV === 'development',
+      // disable: process.env.NODE_ENV === 'development',
     }),
   ],
   devServer: {
